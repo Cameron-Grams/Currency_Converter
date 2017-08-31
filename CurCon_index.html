@@ -14,10 +14,10 @@
 
 <div class="outerShell">
 <section class="instructions" >
-  <p class"inputText" >Convert 
-  <input class="inputText" id="currencyAmount" type="text" value="Enter Amount" > 
+  <p class"inputText" >Amount  
+  <input class="inputText" id="currencyAmount" type="text" value="Enter Amount" > of
 
-    <select name='currencies'>
+    <select name="fromCurrencies"  id='originalCurrency'>
       <option value='AED' title='United Arab Emirates Dirham'>United Arab Emirates Dirham, AED</option>
       <option value='AFN' title='Afghan Afghani'>Afghan Afghani, AFN</option>
       <option value='ALL' title='Albanian Lek'>Albanian Lek, ALL</option>
@@ -147,7 +147,7 @@
       <option value='SBD' title='Solomon Islands Dollar'> Solomon Islands Dollar, SBD</option>
       <option value='SCR' title='Seychellois Rupee'> Seychellois Rupee, SCR</option>
       <option value='SDG' title='Sudanese Pound'> Sudanese Pound, SDG</option>
-      <option value='SEK' title='Swedish Krona'> Swedish Krona, SEK</option>
+      <option value='SEK' title='Swedish Krona' selected> Swedish Krona, SEK</option>
       <option value='SGD' title='Singapore Dollar'> Singapore Dollar, SGD</option>
       <option value='SHP' title='Saint Helena Pound'> Saint Helena Pound, SHP</option>
       <option value='SLL' title='Sierra Leonean Leone'> Sierra Leonean Leone, SLL</option>
@@ -194,7 +194,7 @@
 
 
 
-<select name='currencies'>
+<select name="toCurrencies"  id='finalCurrency'>
   <option value='AED' title='United Arab Emirates Dirham'>United Arab Emirates Dirham, AED</option>
   <option value='AFN' title='Afghan Afghani'>Afghan Afghani, AFN</option>
   <option value='ALL' title='Albanian Lek'>Albanian Lek, ALL</option>
@@ -365,8 +365,15 @@
   <option value='ZMW' title='Zambian Kwacha'> Zambian Kwacha, ZWL</option>
   <option value='ZWL' title='Zimbabwean Dollar'> Zimbabwean Dollar, ZWL</option>
 </select>
-
+<button id="calculateButton" >Calculate</button>
 </section>
+
+<section class="results">Results</section>
+
+
+
+
+
 </div>
 
 

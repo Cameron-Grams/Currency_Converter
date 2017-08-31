@@ -20,7 +20,7 @@ body * {
 .instructions{
     font-size: 1.0em;
     margin: auto;
-    width: 80%;
+    width: 100%;
 }
 
 .inputText{
@@ -31,4 +31,8 @@ body * {
     border: 1px solid #DCD6D6;
     border-radius: 3px;
     text-align: center;
+}
+
+.calculateButton{
+    display: inline-block;
 }

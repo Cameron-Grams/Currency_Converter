@@ -1,4 +1,4 @@
-cont API_KEY = 'fb3fadded8a585c425abb7d0da65f95a';
+const API_KEY = 'fb3fadded8a585c425abb7d0da65f95a'; //for the currency converter API
 
 
 
@@ -7,7 +7,24 @@ cont API_KEY = 'fb3fadded8a585c425abb7d0da65f95a';
 
 
 
-function main(){};
+
+function resetDisplay( ){
+  $( '.results' ).empty();
+  $( '#currencyAmount' ).val( '' );
+}
+
+function sendConvert( event ){
+  let fromCurrency = $( '#originalCurrency' ).val();
+  let toCurrency = $( '#finalCurrency' ).val();
+  console.log( 'from currency is: ', fromCurrency );
+  console.log( 'to currency is: ', toCurrency );
+}
 
 
-$( main );
+function main(){
+  $( '#currencyAmount' ).focus( resetDisplay );
+  $( '#calculateButton' ).bind( 'click', sendConvert );
+};
+
+
+$( document ).ready( main() );
