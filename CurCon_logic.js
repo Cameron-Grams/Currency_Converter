@@ -14,6 +14,7 @@ function resetDisplay( ){
 }
 
 function sendConvert( event ){
+  resetDisplay();    
   let fromCurrency = $( '#originalCurrency' ).val();
   let toCurrency = $( '#finalCurrency' ).val();
   console.log( 'from currency is: ', fromCurrency );
