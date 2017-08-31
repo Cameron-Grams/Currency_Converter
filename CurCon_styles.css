@@ -2,3 +2,33 @@ body{
     box-sizing: border-box;
 }
 
+body * {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.header{
+    margin: 20px auto auto;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.outerShell{
+    width: 100%;
+}
+
+.instructions{
+    font-size: 1.0em;
+    margin: auto;
+    width: 80%;
+}
+
+.inputText{
+     margin: 0 5px 0 5px;   
+}
+
+#currencyAmount{
+    border: 1px solid #DCD6D6;
+    border-radius: 3px;
+    text-align: center;
+}
