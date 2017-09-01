@@ -3,6 +3,7 @@ const CONV_API_KEY = 'fb3fadded8a585c425abb7d0da65f95a'; //for the currency conv
 
 const COUNTRY_URL = 'https://restcountries.eu/rest/v2/currency/';
 
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2FtZXJvbjQzIiwiYSI6ImNqNzF1czNnajA2dmgzM24xNGVoNmltbnQifQ.5uzTFIefwgSiHHfAjk4azg';
 
 function resetDisplay( ){
   $( '.results' ).empty();
@@ -45,7 +46,26 @@ function showFlag( data ){
   let flagOnDOM = `<img src=${ flag }>`;
   let locationStub = `Located at ${ location }`;
   $( '.flags' ).html( flagOnDOM );
-  $( '.worldMap' ).html( locationStub );
+  worldMap( location );
+}
+
+function worldMap( location ){
+  const theLocation = [ location[ 1 ], location[ 0 ] ];
+  const map = new mapboxgl.Map({
+    container: 'worldMap',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: theLocation,
+    zoom: 0
+  });
+
+  var el = document.createElement('div');
+  el.id = 'marker';
+  
+  // create the marker
+  new mapboxgl.Marker(el, {offset:[-0, -0]})
+      .setLngLat( theLocation )
+      .addTo(map);
+
 }
 
 function main(){
