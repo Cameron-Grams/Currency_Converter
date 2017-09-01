@@ -44,3 +44,8 @@ body * {
 .calculateButton{
     display: inline-block;
 }
+
+img{
+    border: 1px solid black;
+    width: 100%;
+}

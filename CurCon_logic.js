@@ -1,30 +1,52 @@
-const BASE_URL = 'http://apilayer.net/api/convert?access_key=';
+const CONV_BASE_URL = 'http://apilayer.net/api/live?access_key=';
+const CONV_API_KEY = 'fb3fadded8a585c425abb7d0da65f95a'; //for the currency converter API
 
-const API_KEY = 'fb3fadded8a585c425abb7d0da65f95a'; //for the currency converter API
+const COUNTRY_URL = 'https://restcountries.eu/rest/v2/currency/';
+
 
 function resetDisplay( ){
   $( '.results' ).empty();
+  $( '.flags' ).empty();
+  $( '.worldMap' ).empty();
   $( '#currencyAmount' ).val( '' );
 }
 
 function sendConvert( event ){
-  resetDisplay();    
-  let fromCurrency = $( '#originalCurrency' ).val();
   let toCurrency = $( '#finalCurrency' ).val();
+  let sendURL = CONV_BASE_URL + CONV_API_KEY + `&currencies=${ toCurrency }&source=USD&format=1`;
+  $.getJSON( sendURL, createConversion );
+}
+
+function createConversion( data ){
   let convertAmount = $( '#currencyAmount' ).val();
-  let sendURL = BASE_URL + API_KEY + `&from=${ fromCurrency }&to=${ toCurrency }&amount=${ convertAmount}`;
-
-  $.getJSON( sendURL, displayConversion );
-  
-  console.log( 'from currency is: ', fromCurrency );
-  console.log( 'to currency is: ', toCurrency );
+  let toCurrency = $( '#finalCurrency' ).val();
+  let targetKey = 'USD' + toCurrency;
+  let targetRatio = data.quotes[ targetKey ];
+  let finalAmount = convertAmount * targetRatio;
+  displayConversion( convertAmount, finalAmount );
+  getFlag( toCurrency );
 }
 
-function displayConversion( data ){
+function displayConversion( convertAmount, finalAmount ){
+  let targetCurrency = $( '#finalCurrency' ).val();
+  let conversionResult = `$ ${ convertAmount } US Dollars is equal to ${ finalAmount } ${ targetCurrency }.`;
+  $( '.results' ).html(  conversionResult );
+}
+
+function getFlag( currency ){
+  let country = COUNTRY_URL + currency;
+  $.getJSON( country, showFlag );
+}
+
+function showFlag( data ){
   console.log( data );
+  let flag = data[ 0 ].flag;
+  let location = data[ 0 ].latlng;
+  let flagOnDOM = `<img src=${ flag }>`;
+  let locationStub = `Located at ${ location }`;
+  $( '.flags' ).html( flagOnDOM );
+  $( '.worldMap' ).html( locationStub );
 }
-
-
 
 function main(){
   $( '#currencyAmount' ).focus( resetDisplay );
