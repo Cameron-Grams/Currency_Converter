@@ -36,7 +36,7 @@ function createConversion( data ){
     displayConversion( convertAmount, finalAmount );
     getFlag( toCurrency );
   } else {
-    $( '.results' ).html( "No currency information available.")
+    $( '.results' ).html( "No new currency information available.")
   }
   
 }

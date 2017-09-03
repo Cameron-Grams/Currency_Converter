@@ -25,7 +25,12 @@ body * {
 }
 
 .inputText{
-     margin: 0 5px 0 5px;   
+     margin: 7px 5px 7px 5px;   
+}
+
+.instructions, inputText{
+    color: #8D8787;
+    margin-top: 10px;
 }
 
 #currencyAmount{
@@ -40,11 +45,13 @@ body * {
 }
 
 #finalCurrency{
-    background-color: rgba(8, 209, 8, 0.75);
+    background-color: rgba(86, 120, 86, 0.75);
+    border-radius: 3px;
 }
 
-.calculateButton{
-    display: inline-block;
+#calculateButton{
+    border-radius: 3px;
+    background-color: rgba( 86, 120, 86, 0.75 );
 }
 
 .results{
@@ -57,6 +64,7 @@ body * {
 .flags{
     width: 50%;
     margin: auto;
+    margin-bottom: 20px;
 }
 
 img{
