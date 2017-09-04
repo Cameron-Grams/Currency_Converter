@@ -1,4 +1,4 @@
-const CONV_BASE_URL = 'https://apilayer.net/api/live?access_key=';
+const CONV_BASE_URL = 'http://apilayer.net/api/live?access_key=';
 const CONV_API_KEY = 'fb3fadded8a585c425abb7d0da65f95a'; //for the currency converter API
 
 const COUNTRY_URL = 'https://restcountries.eu/rest/v2/currency/';
@@ -19,10 +19,8 @@ function sendConvert( event ){
   if ( results.success === true ){
     return results;
   } else {
-    console.log( 'no curr inf' );
-    $( '.results' ).html( "No currency information available.")
     return false;
-  }
+  } 
 }
 
 function createConversion( data ){
@@ -35,8 +33,10 @@ function createConversion( data ){
     let finalAmount = (convertAmount * targetRatio).toFixed( 2 );
     displayConversion( convertAmount, finalAmount );
     getFlag( toCurrency );
+  } else if ( data.sucess != true ){
+    $( '.results' ).html( "Alert 2 No new currency information available.")
   } else {
-    $( '.results' ).html( "No new currency information available.")
+    alert( 'third error' );
   }
   
 }
