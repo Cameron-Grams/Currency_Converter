@@ -11,26 +11,35 @@ function resetDisplay( ){
   $( '#worldMap' ).empty();
   $( '#currencyAmount' ).val( '' );
 }
-
+ 
 function sendConvert( event ){
+  let fromCurrency = $( '#fromCurrency' ).val();
   let toCurrency = $( '#finalCurrency' ).val();
-  let sendURL = CONV_BASE_URL + CONV_API_KEY + `&currencies=${ toCurrency }&source=USD&format=1`;
+  let sendURL = CONV_BASE_URL + CONV_API_KEY + `&currencies=${ fromCurrency },${ toCurrency }&source=USD&format=1`;
   let  results = $.getJSON( sendURL, createConversion );
   if ( results.success === true ){
+    console.log( results );
     return results;
   } else {
     return false;
   } 
 }
 
+
 function createConversion( data ){
   console.log( 'data in converstion is ', data );
+
+  console.log( data );
+
   let convertAmount = $( '#currencyAmount' ).val();
+  let fromCurrency = $( '#fromCurrency' ).val();
   let toCurrency = $( '#finalCurrency' ).val();
+  let originKey = 'USD' + fromCurrency;
   let targetKey = 'USD' + toCurrency;
-  if ( data.quotes[ targetKey ] ){
-    let targetRatio = data.quotes[ targetKey ];
+  if ( data.quotes[ targetKey ] && data.quotes[ originKey ] ){
+    let targetRatio = data.quotes[ targetKey ] / data.quotes[ originKey ];
     let finalAmount = (convertAmount * targetRatio).toFixed( 2 );
+    console.log( 'final amount is ', finalAmount );
     displayConversion( convertAmount, finalAmount );
     getFlag( toCurrency );
   } else if ( data.sucess != true ){
@@ -38,12 +47,13 @@ function createConversion( data ){
   } else {
     alert( 'third error' );
   }
-  
 }
 
+
 function displayConversion( convertAmount, finalAmount ){
+  let fromCurrency = $( '#fromCurrency' ).val();
   let targetCurrency = $( '#finalCurrency' ).val();
-  let conversionResult = `$ ${ convertAmount } US Dollars is equal to ${ finalAmount } ${ targetCurrency }.`;
+  let conversionResult = `${ convertAmount } ${ fromCurrency } is equal to ${ finalAmount } ${ targetCurrency }.`;
   $( '.results' ).html(  conversionResult );
 }
 
@@ -77,8 +87,9 @@ function worldMap( location ){
   new mapboxgl.Marker(el, {offset:[-0, -0]})
       .setLngLat( theLocation )
       .addTo(map);
-
 }
+
+
 
 function main(){
   $( '#currencyAmount' ).focus( resetDisplay );

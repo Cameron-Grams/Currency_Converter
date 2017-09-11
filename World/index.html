@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Currency Converter</title>
+<title>World Currency Converter</title>
  
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.39.1/mapbox-gl.css' rel='stylesheet' />
@@ -11,16 +11,14 @@
 <main>
   <body>
 
-<header class="header">US Currency Converter</header>
+<header class="header">World Currency Converter</header>
 
 <div class="outerShell">
 <section class="instructions" >
-  <p class="inputText" >Amount $US  
-  <input class="inputText" id="currencyAmount" type="text" value="Enter Amount" > </p>
    
-<p class="inputText"> Converted to
-
-<select name="toCurrencies"  id='finalCurrency'>
+<p class="inputText"> Enter Amount of initial currency and origin
+<input type="text" id="currencyAmount" value="Enter Amount">
+<select name="fromCurrency"  id='fromCurrency'>
   <option value='AED' title='United Arab Emirates Dirham'>United Arab Emirates Dirham, AED</option>
   <option value='AFN' title='Afghan Afghani'>Afghan Afghani, AFN</option>
   <option value='ALL' title='Albanian Lek'>Albanian Lek, ALL</option>
@@ -194,7 +192,7 @@
 
 
 
-
+<p>Converted to 
 <select name="toCurrencies"  id='finalCurrency'>
   <option value='AED' title='United Arab Emirates Dirham'>United Arab Emirates Dirham, AED</option>
   <option value='AFN' title='Afghan Afghani'>Afghan Afghani, AFN</option>

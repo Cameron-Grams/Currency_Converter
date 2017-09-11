@@ -1,5 +1,6 @@
 body{
     box-sizing: border-box;
+    background-color: rgba(221, 211, 118, 0.75)
 }
 
 body * {
@@ -39,9 +40,9 @@ body * {
     text-align: center;
 }
 
-/* this was removed for the single currencies... */
-#originalCurrency{
-    background-color: rgba(255, 0, 0, 0.78);
+#fromCurrency{
+    background-color: rgba(177, 135, 127, 0.75);
+    border-radius: 3px;
 }
 
 #finalCurrency{
@@ -51,7 +52,7 @@ body * {
 
 #calculateButton{
     border-radius: 3px;
-    background-color: rgba(126, 176, 126, 0.75);
+    background-color: rgba(59, 75, 59, 0.75);
 }
 
 .results{
