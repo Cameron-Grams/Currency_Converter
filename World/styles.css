@@ -19,10 +19,13 @@ body * {
 }
 
 .instructions{
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
     font-size: 1.0em;
     margin: auto;
     text-align: center;
-    width: 70%;
+    width: 50%;
 }
 
 .inputText{

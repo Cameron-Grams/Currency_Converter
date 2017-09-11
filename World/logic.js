@@ -41,7 +41,7 @@ function createConversion( data ){
     let finalAmount = (convertAmount * targetRatio).toFixed( 2 );
     console.log( 'final amount is ', finalAmount );
     displayConversion( convertAmount, finalAmount );
-    getFlag( toCurrency );
+    getFlags( fromCurrency, toCurrency );
   } else if ( data.sucess != true ){
     $( '.results' ).html( "Alert 2 No new currency information available.")
   } else {
@@ -57,20 +57,24 @@ function displayConversion( convertAmount, finalAmount ){
   $( '.results' ).html(  conversionResult );
 }
 
-function getFlag( currency ){
-  let country = COUNTRY_URL + currency;
-  $.getJSON( country, showFlag );
+function getFlags( fromCurrency, toCurrency ){
+  let fromCountry = COUNTRY_URL + fromCurrency;
+  let toCountry = COUNTRY_URL + toCurrency;
+  $.getJSON( fromCountry, showFlag );
+  $.getJSON( toCountry, showFlag );
+  $.getJSON( toCountry, buildMap ); //heavy to call the API twice for data...
 }
 
 function showFlag( data ){
   let flag = data[ 0 ].flag;
-  let location = data[ 0 ].latlng;
   let flagOnDOM = `<img src=${ flag }>`;
-  let locationStub = `Located at ${ location }`;
-  $( '.flags' ).html( flagOnDOM );
-  worldMap( location );
+  $( '.flags' ).append( flagOnDOM );
 }
 
+function buildMap( data ){
+  let location = data[ 0 ].latlng;
+  worldMap( location );
+}
 function worldMap( location ){
   const theLocation = [ location[ 1 ], location[ 0 ] ];
   const map = new mapboxgl.Map({
