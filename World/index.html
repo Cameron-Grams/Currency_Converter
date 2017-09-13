@@ -16,9 +16,10 @@
 <div class="outerShell">
 <section class="instructions" >
    
-<p class="inputText">Amount
-<input type="text" id="currencyAmount" value="Enter Amount"></p>
-<p>From 
+<ul id="shapeDisplay">  
+<li><p class="#">Amount <input type="text" id="currencyAmount" value="Enter Amount"></p></li>
+
+<li><p>From 
 <select name="fromCurrency"  id='fromCurrency'>
   <option value='AED' title='United Arab Emirates Dirham'>United Arab Emirates Dirham, AED</option>
   <option value='AFN' title='Afghan Afghani'>Afghan Afghani, AFN</option>
@@ -189,11 +190,11 @@
   <option value='ZMK' title='Zambian Kwacha (pre-2013)'> Zambian Kwacha (pre-2013), ZMK</option>
   <option value='ZMW' title='Zambian Kwacha'> Zambian Kwacha, ZWL</option>
   <option value='ZWL' title='Zimbabwean Dollar'> Zimbabwean Dollar, ZWL</option>
-</select> </p>
+</select> </p></li>
 
 
 
-<p>Converted to 
+<li><p>To 
 <select name="toCurrencies"  id='finalCurrency'>
   <option value='AED' title='United Arab Emirates Dirham'>United Arab Emirates Dirham, AED</option>
   <option value='AFN' title='Afghan Afghani'>Afghan Afghani, AFN</option>
@@ -364,9 +365,10 @@
   <option value='ZMK' title='Zambian Kwacha (pre-2013)'> Zambian Kwacha (pre-2013), ZMK</option>
   <option value='ZMW' title='Zambian Kwacha'> Zambian Kwacha, ZWL</option>
   <option value='ZWL' title='Zimbabwean Dollar'> Zimbabwean Dollar, ZWL</option>
-</select> </p>
+</select> </p></li>
+</ul>
 
-<button id="calculateButton" >Calculate</button>
+<input type="submit" id="calculateButton" value="Calculate" ></input>
 </section>
 </div>
 <section class="results"></section>

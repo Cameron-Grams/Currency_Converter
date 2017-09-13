@@ -19,7 +19,7 @@ body * {
 }
 
 .instructions{
-    border: 1px solid black;
+    border: 1px solid #635F5F;
     border-radius: 5px;
     padding: 5px;
     font-size: 1.0em;
@@ -33,7 +33,7 @@ body * {
 }
 
 .instructions, inputText{
-    color: #8D8787;
+    color: #403E3E;
     margin-top: 10px;
 }
 
@@ -41,6 +41,7 @@ body * {
     border: 1px solid #DCD6D6;
     border-radius: 3px;
     text-align: center;
+    width: 250px;
 }
 
 #fromCurrency{
@@ -53,9 +54,17 @@ body * {
     border-radius: 3px;
 }
 
+ul{
+    margin-left: 125px;
+    text-align: left;
+    list-style-type: none;
+}
+
+
 #calculateButton{
     border-radius: 3px;
     background-color: rgba(59, 75, 59, 0.75);
+    border: 1px solid transparent;
 }
 
 .results{
