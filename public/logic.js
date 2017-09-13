@@ -11,8 +11,16 @@ function resetDisplay( ){
   $( '#worldMap' ).empty();
   $( '#currencyAmount' ).val( '' );
 }
- 
+
+function secondSearch( ){
+  $( '.results' ).empty();
+  $( '.flags' ).empty();
+  $( '#worldMap' ).empty();
+}  
+
+
 function sendConvert( event ){
+  secondSearch( );
   let fromCurrency = $( '#fromCurrency' ).val();
   let toCurrency = $( '#finalCurrency' ).val();
   let sendURL = CONV_BASE_URL + CONV_API_KEY + `&currencies=${ fromCurrency },${ toCurrency }&source=USD&format=1`;
