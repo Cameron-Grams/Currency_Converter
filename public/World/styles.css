@@ -41,17 +41,19 @@ body * {
     border: 1px solid #DCD6D6;
     border-radius: 3px;
     text-align: center;
-    width: 250px;
+    width: 50%;
 }
 
 #fromCurrency{
     background-color: rgba(177, 135, 127, 0.75);
     border-radius: 3px;
+    width: 50%;
 }
 
 #finalCurrency{
     background-color: rgba(127, 177, 127, 0.75);
     border-radius: 3px;
+    width: 50%;
 }
 
 ul{
@@ -97,3 +99,18 @@ img{
     width: 25px;
     height: 25px;
 }
+
+@media only screen and ( min-width: 760px ) {
+    body{
+        background-color: #C5C766;
+    }
+    .flags{
+        width: 100%;
+    }
+}
+
+
+/* need to change the centering of the currency selectors
+need to change the positioning of the flags
+*/
+
