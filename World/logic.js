@@ -25,7 +25,7 @@ function sendConvert( event ){
   } 
 }
 
-
+ 
 function createConversion( data ){
   console.log( 'data in converstion is ', data );
 
@@ -64,7 +64,7 @@ function getFlags( fromCurrency, toCurrency ){
   $.getJSON( toCountry, showFlag );
   $.getJSON( toCountry, buildMap ); //heavy to call the API twice for data...
 }
-
+//buuild a flagURL function, then build the show flags with the right URL and Ids for to and from...
 function showFlag( data ){
   let flag = data[ 0 ].flag;
   let flagOnDOM = `<img src=${ flag }>`;
