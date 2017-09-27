@@ -11,6 +11,7 @@ function resetDisplay( ){
   $( '#worldMap' ).empty();
   $( '#currencyAmount' ).val( '' );
 }
+
  
 function sendConvert( event ){
   let fromCurrency = $( '#fromCurrency' ).val();
@@ -18,7 +19,6 @@ function sendConvert( event ){
   let sendURL = CONV_BASE_URL + CONV_API_KEY + `&currencies=${ fromCurrency },${ toCurrency }&source=USD&format=1`;
   let  results = $.getJSON( sendURL, createConversion );
   if ( results.success === true ){
-    console.log( results );
     return results;
   } else {
     return false;
@@ -27,10 +27,6 @@ function sendConvert( event ){
 
  
 function createConversion( data ){
-  console.log( 'data in converstion is ', data );
-
-  console.log( data );
-
   let convertAmount = $( '#currencyAmount' ).val();
   let fromCurrency = $( '#fromCurrency' ).val();
   let toCurrency = $( '#finalCurrency' ).val();
@@ -39,7 +35,6 @@ function createConversion( data ){
   if ( data.quotes[ targetKey ] && data.quotes[ originKey ] ){
     let targetRatio = data.quotes[ targetKey ] / data.quotes[ originKey ];
     let finalAmount = (convertAmount * targetRatio).toFixed( 2 );
-    console.log( 'final amount is ', finalAmount );
     displayConversion( convertAmount, finalAmount );
     getFlags( fromCurrency, toCurrency );
   } else if ( data.sucess != true ){
@@ -58,16 +53,37 @@ function displayConversion( convertAmount, finalAmount ){
 }
 
 function getFlags( fromCurrency, toCurrency ){
+  var fromFlag, toFlag;
+
+
+  function getFromFlag( data ){
+    console.log( data[ 0 ].flag );
+    fromFlag = data[ 0 ][ 'flag' ];
+    return fromFlag;
+  }
+
+  function getToFlag( data ){
+    console.log( data[ 0 ].flag );
+    toFlag = data[ 0 ][ 'flag' ];
+    return toFlag;
+  }
+
+  console.log( 'outside from flag: ', fromFlag );
+  console.log( 'outside to flag: ', toFlag );
   let fromCountry = COUNTRY_URL + fromCurrency;
   let toCountry = COUNTRY_URL + toCurrency;
-  $.getJSON( fromCountry, showFlag );
-  $.getJSON( toCountry, showFlag );
+
+  $.getJSON( fromCountry, getFromFlag );
+  $.getJSON( toCountry, getToFlag );
+
+  addFlag( fromFlag, 'fromCountry' );
+  addFlag( toFlag, 'toCountry' );
+
   $.getJSON( toCountry, buildMap ); //heavy to call the API twice for data...
 }
 //buuild a flagURL function, then build the show flags with the right URL and Ids for to and from...
-function showFlag( data ){
-  let flag = data[ 0 ].flag;
-  let flagOnDOM = `<img src=${ flag }>`;
+function addFlag( flag, role ){
+  let flagOnDOM = `<img class=${ role } src=${ flag }>`;
   $( '.flags' ).append( flagOnDOM );
 }
 
@@ -93,13 +109,10 @@ function worldMap( location ){
       .addTo(map);
 }
 
-
-
 function main(){
   $( '#currencyAmount' ).focus( resetDisplay );
   $( '#calculateButton' ).bind( 'click', sendConvert );
 };
-
 
 $( document ).ready( main() );
 
