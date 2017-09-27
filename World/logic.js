@@ -55,7 +55,7 @@ function displayConversion( convertAmount, finalAmount ){
 function getFlags( fromCurrency, toCurrency ){
   var fromFlag, toFlag;
 
-
+/*
   function getFromFlag( data ){
     console.log( data[ 0 ].flag );
     fromFlag = data[ 0 ][ 'flag' ];
@@ -67,14 +67,15 @@ function getFlags( fromCurrency, toCurrency ){
     toFlag = data[ 0 ][ 'flag' ];
     return toFlag;
   }
+  */
 
   console.log( 'outside from flag: ', fromFlag );
   console.log( 'outside to flag: ', toFlag );
   let fromCountry = COUNTRY_URL + fromCurrency;
   let toCountry = COUNTRY_URL + toCurrency;
 
-  $.getJSON( fromCountry, getFromFlag );
-  $.getJSON( toCountry, getToFlag );
+  fromFlag = $.getJSON( fromCountry, ( data => data[ 0 ].flag ) );
+  toFlag = $.getJSON( toCountry, ( data => data[ 0 ].flag ) );
 
   addFlag( fromFlag, 'fromCountry' );
   addFlag( toFlag, 'toCountry' );
