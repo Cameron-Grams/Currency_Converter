@@ -120,10 +120,10 @@ img{
         width: 100%;
     }
     .fromFlag{
-        width: 50%;
+        width: 48%;
     }
     .toFlag{
-        width: 50%;
+        width: 48%;
         float: right;
     }
 }
