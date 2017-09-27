@@ -1,4 +1,6 @@
 body{
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
     background-color: rgba(95, 95, 91, 0.75)
 }
@@ -83,11 +85,11 @@ ul{
 }
 
 .fromFlag{
-    border: 3px solid red;
+    border: 7px solid red;
 }
 
 .toFlag{
-    border: 3px solid green;
+    border: 7px solid green;
 }
 
 img{
@@ -113,7 +115,16 @@ img{
         background-color: #B1B1AB;
     }
     .flags{
+        box-sizing: border-box;
+        display: inline-block;
         width: 100%;
+    }
+    .fromFlag{
+        width: 50%;
+    }
+    .toFlag{
+        width: 50%;
+        float: right;
     }
 }
 

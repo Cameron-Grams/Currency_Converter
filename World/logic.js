@@ -55,17 +55,18 @@ function displayConversion( convertAmount, finalAmount ){
 function getFlags( fromCurrency, toCurrency ){
   var fromFlag, toFlag;
 
-
   function getFromFlag( data ){
     console.log( data[ 0 ].flag );
     fromFlag = data[ 0 ][ 'flag' ];
-    return fromFlag;
+    let fromFlagOnDom = `<img class="fromFlag" src=${ fromFlag } >`;
+    $( '.flags' ).append( fromFlagOnDom );
   }
 
   function getToFlag( data ){
     console.log( data[ 0 ].flag );
     toFlag = data[ 0 ][ 'flag' ];
-    return toFlag;
+    let toFlagOnDom = `<img class="toFlag" src=${ toFlag } >`;
+    $( '.flags' ).append( toFlagOnDom );
   }
 
   console.log( 'outside from flag: ', fromFlag );
@@ -76,16 +77,9 @@ function getFlags( fromCurrency, toCurrency ){
   $.getJSON( fromCountry, getFromFlag );
   $.getJSON( toCountry, getToFlag );
 
-  addFlag( fromFlag, 'fromCountry' );
-  addFlag( toFlag, 'toCountry' );
-
   $.getJSON( toCountry, buildMap ); //heavy to call the API twice for data...
 }
 //buuild a flagURL function, then build the show flags with the right URL and Ids for to and from...
-function addFlag( flag, role ){
-  let flagOnDOM = `<img class=${ role } src=${ flag }>`;
-  $( '.flags' ).append( flagOnDOM );
-}
 
 function buildMap( data ){
   let location = data[ 0 ].latlng;
